@@ -1,16 +1,16 @@
 "use client"
 
-import Image from "next/image";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 export default function Home() {
   const [roofArea, setRoofArea] = useState("");
   const [solarPanelEfficiency, setSolarPanelEfficiency] = useState("");
   const [result, setResult] = useState(null);
 
-  const calculateCapacity = (e) => {
+  const calculateCapacity = (e:FormEvent<HTMLFormElement>)  => {
     e.preventDefault();
     const capacity = parseFloat(roofArea) * (parseFloat(solarPanelEfficiency) / 100);
+    // @ts-ignore
     setResult(capacity.toFixed(2));
   };
 
